@@ -339,7 +339,7 @@ def make_prediction(output):
     for model in ml_model:
         avg_error += model.predict(df)
 
-    avg_error /= 10
+    avg_error /= len(ml_model)
     avg_error
 
     return np.expm1(avg_error)
