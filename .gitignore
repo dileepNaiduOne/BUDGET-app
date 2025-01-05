@@ -1,4 +1,14 @@
-*.csv
+cleaned_df.csv
+cleaned_df_using_mice.csv
+Dileep's_Submission_Take29.csv
+Dileep's_Submission_Take31.csv
+EDAed_df.csv
+folds_prediction.csv
+sample_submission.csv
+test.csv
+train.csv
+trainable_df.csv
+
 *.pkl
 models.pkl
 train.hyper
