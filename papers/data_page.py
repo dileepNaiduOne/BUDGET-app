@@ -1,4 +1,7 @@
 import streamlit as st
+from make_prediction import make_prediction
+import warnings
+warnings.filterwarnings("ignore")
 
 
 with open( "style.css" ) as css:
@@ -115,9 +118,33 @@ with c2:
 
 
         @st.dialog("PREDICTION", width="large")
-        def prediction(inputs):
-            st.write(inputs)
-            # Sample output - [21,"Male - :material/male:","Master's","Unemployed","Single - :material/man_4:","Urban","House","No","Weekly",5124,3,784,7844.99,"datetime.date(2022, 8, 17)","Basic",8,2,8,"Good"]
+        def prediction(user_inputs):
+            st.write(user_inputs)
+            st.write(make_prediction(user_inputs))
+
+            ''' Sample output - [
+                0 ---> 21,
+                1 ---> "Male - :material/male:",
+                2 ---> "Master's",
+                3 ---> "Unemployed",
+                4 ---> "Single - :material/man_4:",
+                5 ---> "Urban",
+                6 ---> "House",
+                7 ---> "No",
+                8 ---> "Weekly",
+                9 ---> 5124,
+                10 --> 3,
+                11 --> 784,
+                12 --> 7844.99,
+                13 --> "datetime.date(2022, 8, 17)",
+                14 --> "Basic",
+                15 --> 8,
+                16 --> 2,
+                17 --> 8,
+                18 --> "Good"
+            ]'''
+
+
 
         st.write("\n")
         st.write("\n")
@@ -125,4 +152,26 @@ with c2:
 
         if pre:
 
-            prediction(inputs)
+            send_to_predict = {
+            "Age"                            : inputs[0],
+            "Gender"                         : inputs[1],
+            "Annual Income"                  : inputs[9],
+            "Marital Status"                 : inputs[4],
+            "Number of Dependents"           : inputs[10],
+            "Education Level"                : inputs[2],
+            "Occupation"                     : inputs[3],
+            "Health Score"                   : inputs[11],
+            "Location"                       : inputs[5],
+            "Policy Type"                    : inputs[14],
+            "Previous Claims"                : inputs[16],
+            "Vehicle Age"                    : inputs[17],
+            "Credit Score"                   : inputs[12],
+            "Insurance Duration"             : inputs[15],
+            "Policy Start Date"              : inputs[13],
+            "Customer Feedback"              : inputs[18],
+            "Smoking Status"                 : inputs[7],
+            "Exercise Frequency"             : inputs[8],
+            "Property Type"                  : inputs[6]
+        }
+
+            prediction(send_to_predict)
