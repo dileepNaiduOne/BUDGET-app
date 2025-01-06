@@ -15,7 +15,7 @@ inputs = []
 
 with c2:
     # st.title(":gray[Prediction Form]", anchor=False)
-    st.write(":gray[Click below button for prediction]")
+    # st.write(":gray[Click below button for prediction]")
 
     # st.divider()
     pred = st.empty()
@@ -98,11 +98,11 @@ with c2:
         inputs.append(policy)
 
         # Insurance Duration
-        insurance_duration = random.randint(1, 10)
+        insurance_duration = random.randint(1, 9)
         inputs.append(insurance_duration)
 
         # Previous Claims
-        previous_claims = random.randint(1, 10)
+        previous_claims = random.randint(0, 9)
         inputs.append(previous_claims)
 
         # Vehicle Age
@@ -127,9 +127,9 @@ with c2:
             with st.spinner('Getting your prediction. PLEASE WAIT...'):
                 p = make_prediction(user_inputs)[0]
                 st.divider()
-                pred = st.write(f"## :gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p:.2f}]")
+                pred = st.title(f":gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p:.2f}]", anchor=False)
                 st.divider()
-                st.write("# :gray[Data]")
+                st.title(":gray[Data]", anchor=False)
                 st.dataframe(user_inputs, use_container_width=True)
             
 
@@ -141,29 +141,36 @@ with c2:
         st.write("\n")
         st.write("\n")
         pre = st.form_submit_button(f"# PREDICT", type="primary", icon=":material/currency_rupee:", use_container_width=True)
+        st.caption(":gray[Click above button for prediction]")
 
-        if pre:
+    st.write("\n")
 
-            send_to_predict = {
-            "Age"                            : inputs[0],
-            "Gender"                         : inputs[1],
-            "Annual Income"                  : inputs[9],
-            "Marital Status"                 : inputs[4],
-            "Number of Dependents"           : inputs[10],
-            "Education Level"                : inputs[2],
-            "Occupation"                     : inputs[3],
-            "Health Score"                   : inputs[11],
-            "Location"                       : inputs[5],
-            "Policy Type"                    : inputs[14],
-            "Previous Claims"                : inputs[16],
-            "Vehicle Age"                    : inputs[17],
-            "Credit Score"                   : inputs[12],
-            "Insurance Duration"             : inputs[15],
-            "Policy Start Date"              : inputs[13],
-            "Customer Feedback"              : inputs[18],
-            "Smoking Status"                 : inputs[7],
-            "Exercise Frequency"             : inputs[8],
-            "Property Type"                  : inputs[6]
-        }
+    b1 = st.button(label="Back to Home", type="primary")
+    if b1:
+        st.switch_page("papers/home_page.py")
 
-            prediction(send_to_predict)
+    if pre:
+
+        send_to_predict = {
+        "Age"                            : inputs[0],
+        "Gender"                         : inputs[1],
+        "Annual Income"                  : inputs[9],
+        "Marital Status"                 : inputs[4],
+        "Number of Dependents"           : inputs[10],
+        "Education Level"                : inputs[2],
+        "Occupation"                     : inputs[3],
+        "Health Score"                   : inputs[11],
+        "Location"                       : inputs[5],
+        "Policy Type"                    : inputs[14],
+        "Previous Claims"                : inputs[16],
+        "Vehicle Age"                    : inputs[17],
+        "Credit Score"                   : inputs[12],
+        "Insurance Duration"             : inputs[15],
+        "Policy Start Date"              : inputs[13],
+        "Customer Feedback"              : inputs[18],
+        "Smoking Status"                 : inputs[7],
+        "Exercise Frequency"             : inputs[8],
+        "Property Type"                  : inputs[6]
+    }
+
+        prediction(send_to_predict)

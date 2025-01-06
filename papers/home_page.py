@@ -26,11 +26,11 @@ with c2:
              , unsafe_allow_html=True)
 
     st.write('\n')
-    b1 = st.pills(label="None", options=['Show Charts', 'Show Pipeline',], selection_mode='single', label_visibility='collapsed')
+    b1 = st.pills(label="None", options=['See Charts', 'See Pipeline',], selection_mode='single', label_visibility='collapsed')
 
-    if b1 == 'Show Charts':
+    if b1 == 'See Charts':
         st.switch_page("papers/dash_page.py")
-    if b1 == 'Show Pipeline':
+    if b1 == 'See Pipeline':
         st.switch_page("papers/pipe_page.py")
 
 
@@ -38,9 +38,9 @@ with c2:
 
     st.title(":gray[Predict with:]", anchor=False)
 
-    b2 = st.pills(label="None", options=['My Data', 'Random Data',], selection_mode='single', label_visibility='collapsed')
+    b2 = st.pills(label="None", options=['My Input', 'Random Input'], selection_mode='single', label_visibility='collapsed')
 
-    if b2 == 'My Data':
+    if b2 == 'My Input':
         st.switch_page("papers/data_page.py")
-    if b2 == 'Random Data':
+    if b2 == 'Random Input':
         st.switch_page("papers/random_page.py")
