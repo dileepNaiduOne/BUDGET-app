@@ -19,7 +19,7 @@ with c2:
 
     with st.form("prediction_form", enter_to_submit=False, border=False):
         # Age
-        age = st.number_input(":red[Age]", min_value=0, max_value=100, placeholder="Enter values between 0 and 100", value=None)
+        age = st.number_input(":red[Age]", min_value=18, max_value=70, placeholder="Enter age between 0 and 70", value=None)
         inputs.append(age)
         
         # Gender
@@ -63,7 +63,7 @@ with c2:
         # -----------------------------------------------------------------------------------------------------------------------------------------------
 
         # Annual Income
-        income = st.number_input(":red[Annual Income (₹)]", format="%.2f", placeholder="Enter values greater than 0", value=None, min_value=0.00)
+        income = st.number_input(":red[Annual Income (₹)]", format="%.2f", placeholder="Enter income between 0 and 1,50,000", value=None, min_value=0.00, max_value=150000)
         inputs.append(income)
 
         # Number of Dependents
@@ -71,11 +71,11 @@ with c2:
         inputs.append(dependents)
 
         # Health Score
-        health = st.number_input(":red[Health Score]", placeholder="Enter values between 0 and 1000", value=None, min_value=0)
+        health = st.number_input(":red[Health Score]", placeholder="Enter score between 0.00 and 60.00", value=None, min_value=0, max_value=60)
         inputs.append(health)
 
         # Credit Score
-        credit = st.number_input(":red[Credit Score]", placeholder="Enter values between 0 and 1000", value=None, min_value=0)
+        credit = st.number_input(":red[Credit Score]", placeholder="Enter Score between 300 and 850", value=None, min_value=300, max_value=850)
         inputs.append(credit)
 
         # -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -100,7 +100,7 @@ with c2:
         inputs.append(previous_claims)
 
         # Vehicle Age
-        vehicle_age = st.number_input(":red[Vehicle Age]", min_value=0, max_value=30, placeholder="Enter values between 0 and 30", value=None)
+        vehicle_age = st.number_input(":red[Vehicle Age]", min_value=0, max_value=20, placeholder="Enter values between 0 and 20", value=None)
         inputs.append(vehicle_age)
 
         
@@ -119,31 +119,16 @@ with c2:
 
         @st.dialog("PREDICTION", width="large")
         def prediction(user_inputs):
-            st.write(user_inputs)
-            st.write(make_prediction(user_inputs))
+            with st.spinner('Getting your prediction. PLEASE WAIT...'):
+                p = make_prediction(user_inputs)[0]
+                pred = st.write(f"## :gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p:.2f}]")
+                st.divider()
+                st.write("# :gray[Data]")
+                st.dataframe(user_inputs, use_container_width=True)
 
-            ''' Sample output - [
-                0 ---> 21,
-                1 ---> "Male - :material/male:",
-                2 ---> "Master's",
-                3 ---> "Unemployed",
-                4 ---> "Single - :material/man_4:",
-                5 ---> "Urban",
-                6 ---> "House",
-                7 ---> "No",
-                8 ---> "Weekly",
-                9 ---> 5124,
-                10 --> 3,
-                11 --> 784,
-                12 --> 7844.99,
-                13 --> "datetime.date(2022, 8, 17)",
-                14 --> "Basic",
-                15 --> 8,
-                16 --> 2,
-                17 --> 8,
-                18 --> "Good"
-            ]'''
-
+# ====================================================================================================================
+# ====================================================================================================================
+# ====================================================================================================================
 
 
         st.write("\n")
