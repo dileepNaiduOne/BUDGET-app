@@ -9,28 +9,42 @@ c1, c2, c3 = st.columns([2, 3, 2])
 with c2:
     # st.title(":gray[Use of] BUDGET :gray[app:]", anchor=False)
     st.write('''
-                <p style=color:#BFBEBA>  
-                    Ever wondered how life insurance premiums are calculated? 
-                </p> 
-                <p style=color:#BFBEBA> 
-                    <strong style=color:#f3626f> BUDGET </strong> is a web app that lets you explore just that, using the power of machine learning. 
-                    You can see how different factors might impact your potential costs by trying out your own data, or by generating random 
-                    scenarios—like a fun 'what if' game with real-world numbers. 
+                <p style=color:#BFBEBA>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    This predictive model is designed for a Kaggle competition involving <strong style=color:#f3626f>regression</strong> on an <strong style=color:#f3626f>insurance dataset</strong>. 
+                    The process starts by preprocessing the data, addressing missing values with KNN imputation, and cleaning the dataset. 
+                    Feature engineering then expands the dataset, followed by statistical analysis to reduce the number of features. 
+                    Finally, the features are encoded and scaled in preparation for machine learning.
+                </p>
+                <p style=color:#BFBEBA>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    This model achieved an <strong style=color:#f3626f>RMSLE</strong> of <strong style=color:#f3626f>1.04</strong> in a Kaggle competition. 
+                    This score is remarkably close – only 0.03 away – from the top-performing model, placing me in <strong style=color:#f3626f>top 21% position</strong>.
                 </p>
                 <p style=color:#BFBEBA> 
-                    I'm building this app to be both insightful and transparent, letting you peek at the data processing 'pipeline' behind the scenes. 
-                    While still in development, <strong style=color:#f3626f> BUDGET </strong> isn't just about spitting out a number; it's about empowering you to understand the often-complex world of insurance. 
-                    Think of it as your personal data-driven exploration tool for life insurance, making a seemingly daunting topic surprisingly accessible and engaging.
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    The <strong style=color:#f3626f> BUDGET </strong> app helps you understand how life insurance premiums are calculated. 
+                    You can explore this in <strong style=color:#f3626f>two ways:</strong> by entering your <strong style=color:#f3626f> own details </strong> on the "My Input" page or by using <strong style=color:#f3626f> randomly generated </strong> scenarios 
+                    on the "Random Input" page. 
+                </p>
+                <p style=color:#BFBEBA>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    The app has <strong style=color:#f3626f>two more pages</strong> that you can navigate to, each with a specific purpose. 
+                    The "See Tableau Charts" page shows <strong style=color:#f3626f> interactive charts </strong>, 
+                    and "See Pipeline Design" page visualizes the <strong style=color:#f3626f> whole project's pipeline </strong> steps.
                 </p>
              '''
              , unsafe_allow_html=True)
+    
 
     st.write('\n')
-    b1 = st.pills(label="None", options=['See Charts', 'See Pipeline',], selection_mode='single', label_visibility='collapsed')
+    st.write('\n')
+    st.write('\n')
+    b1 = st.pills(label="None", options=['See Tableau Charts', 'See Pipeline Design',], selection_mode='single', label_visibility='collapsed')
 
-    if b1 == 'See Charts':
+    if b1 == 'See Tableau Charts':
         st.switch_page("papers/dash_page.py")
-    if b1 == 'See Pipeline':
+    if b1 == 'See Pipeline Design':
         st.switch_page("papers/pipe_page.py")
 
 
