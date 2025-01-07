@@ -4,7 +4,7 @@ import streamlit as st
 with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
-c1, c2, c3 = st.columns([1.5, 10, 1.5])
+c1, c2 = st.columns([1, 4])
 
 with c2:
     
@@ -43,3 +43,6 @@ with c2:
     ''', width=1500, height=800)
 
     st.link_button(label="View this chart on Tableau Public", url="https://public.tableau.com/views/charts_17356651247130/0?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link", type="primary")
+    b1 = st.button(label="Back to Home", type="primary")
+    if b1:
+        st.switch_page("papers/home_page.py")

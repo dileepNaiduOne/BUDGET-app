@@ -2,6 +2,7 @@ import streamlit as st
 from make_prediction import make_prediction
 import warnings
 warnings.filterwarnings("ignore")
+import datetime
 
 
 with open( "style.css" ) as css:
@@ -13,7 +14,7 @@ inputs = []
 
 with c2:
     st.title(":gray[Prediction Form]", anchor=False)
-    st.caption(":red[*] Providing correct information will ensure precise predictions")
+    st.caption(":red[*] Providing correct information will ensure precise predictions. :red[Please don't leave any field blank.]")
 
     st.divider()
 
@@ -84,7 +85,7 @@ with c2:
 
 
         # Policy Start Date
-        policy_start_date = st.date_input(":red[Policy Start Date]", format="DD/MM/YYYY")
+        policy_start_date = st.date_input(":red[Policy Start Date]", format="DD/MM/YYYY", min_value=datetime.date(2020, 1, 1), max_value=datetime.date(2023, 12, 31))
         inputs.append(policy_start_date)
 
         # Policy Type
@@ -129,10 +130,17 @@ with c2:
     def prediction(user_inputs):
         with st.spinner('Getting your prediction. PLEASE WAIT...'):
             p = make_prediction(user_inputs)[0]
-            pred = st.title(f":gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p:.2f}]", anchor=False)
+            pred = st.title(f":gray[The] Premium Amount :gray[for your data is]  :red[₹{p:.2f}]", anchor=False)
             st.divider()
             st.title(":gray[Data]", anchor=False)
             st.dataframe(user_inputs, use_container_width=True)
+
+    @st.dialog("ERROR", width="large")
+    def tell_error(user_inputs):
+        st.title(":red[Found some BLANK fields!]", anchor=False)
+        blanks = ", ".join([i[0] for i in user_inputs.items() if i[1]==None])
+        st.write(f":gray[Please, Make sure you are filling] :red[{blanks}].", anchor=False)
+
 
 # ====================================================================================================================
 # ====================================================================================================================
@@ -142,27 +150,30 @@ with c2:
         
 
     if pre:
-
         send_to_predict = {
-        "Age"                            : inputs[0],
-        "Gender"                         : inputs[1],
-        "Annual Income"                  : inputs[9],
-        "Marital Status"                 : inputs[4],
-        "Number of Dependents"           : inputs[10],
-        "Education Level"                : inputs[2],
-        "Occupation"                     : inputs[3],
-        "Health Score"                   : inputs[11],
-        "Location"                       : inputs[5],
-        "Policy Type"                    : inputs[14],
-        "Previous Claims"                : inputs[16],
-        "Vehicle Age"                    : inputs[17],
-        "Credit Score"                   : inputs[12],
-        "Insurance Duration"             : inputs[15],
-        "Policy Start Date"              : inputs[13],
-        "Customer Feedback"              : inputs[18],
-        "Smoking Status"                 : inputs[7],
-        "Exercise Frequency"             : inputs[8],
-        "Property Type"                  : inputs[6]
-    }
+            "Age"                            : inputs[0],
+            "Gender"                         : inputs[1],
+            "Annual Income"                  : inputs[9],
+            "Marital Status"                 : inputs[4],
+            "Number of Dependents"           : inputs[10],
+            "Education Level"                : inputs[2],
+            "Occupation"                     : inputs[3],
+            "Health Score"                   : inputs[11],
+            "Location"                       : inputs[5],
+            "Policy Type"                    : inputs[14],
+            "Previous Claims"                : inputs[16],
+            "Vehicle Age"                    : inputs[17],
+            "Credit Score"                   : inputs[12],
+            "Insurance Duration"             : inputs[15],
+            "Policy Start Date"              : inputs[13],
+            "Customer Feedback"              : inputs[18],
+            "Smoking Status"                 : inputs[7],
+            "Exercise Frequency"             : inputs[8],
+            "Property Type"                  : inputs[6]
+        }
 
-        prediction(send_to_predict)
+        if None in inputs:
+            tell_error(send_to_predict)
+        else:
+            prediction(send_to_predict)
+            

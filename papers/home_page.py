@@ -44,3 +44,17 @@ with c2:
         st.switch_page("papers/data_page.py")
     if b2 == 'Random Input':
         st.switch_page("papers/random_page.py")
+
+    st.divider()
+
+    col1, col2, col3, col4 = st.columns([0.8, 0.08,0.20,0.1])
+    with col1:
+        st.caption("")
+    with col3:
+        st.caption(":gray[Wanna have a chat with me...]")
+    with col4:
+        st.markdown("""
+            <a href="https://www.linkedin.com/in/dileepnaidu/" target="_blank">
+                <img src="https://img.icons8.com/?size=500&id=8808&format=png&color=5B5B5B" alt="LinkedIn Profile" width="50" height="50">
+            </a>
+            """, unsafe_allow_html=True)
