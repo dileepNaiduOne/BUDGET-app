@@ -14,7 +14,7 @@ c1, c2, c3 = st.columns([2, 3, 2])
 inputs = []
 
 with c2:
-    # st.title(":gray[Prediction Form]", anchor=False)
+    st.title(":gray[Prediction with random inputs]", anchor=False)
     # st.write(":gray[Click below button for prediction]")
 
     # st.divider()

@@ -13,7 +13,7 @@ c1, c2, c3 = st.columns([2, 3, 2])
 inputs = []
 
 with c2:
-    st.title(":gray[Prediction Form]", anchor=False)
+    st.title(":gray[Prediction with your inputs]", anchor=False)
     st.caption(":red[*] Providing correct information will ensure precise predictions. :red[Please don't leave any field blank.]")
 
     st.divider()
