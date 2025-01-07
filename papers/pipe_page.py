@@ -6,6 +6,9 @@ with open( "style.css" ) as css:
 
 
 st.title(":red[Glimpse of Pipeline ]", anchor=False)
+b1 = st.button(label="Back to Home", type="primary")
+if b1:
+    st.switch_page("papers/home_page.py")
 
 st.components.v1.html('''
     <div 
@@ -35,6 +38,3 @@ st.components.v1.html('''
     </div>
 ''',height=2400)
 
-b1 = st.button(label="Back to Home", type="primary")
-if b1:
-    st.switch_page("papers/home_page.py")

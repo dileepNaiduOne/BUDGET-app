@@ -47,11 +47,8 @@ with c2:
 
     st.divider()
 
-    col1, col2, col3, col4 = st.columns([0.8, 0.08,0.20,0.1])
-    with col1:
-        st.caption("")
-    with col3:
-        st.caption(":gray[Wanna have a chat with me...]")
+    col3, col4 = st.columns([10, 1])
+
     with col4:
         st.markdown("""
             <a href="https://www.linkedin.com/in/dileepnaidu/" target="_blank">

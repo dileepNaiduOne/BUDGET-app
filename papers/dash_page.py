@@ -4,7 +4,7 @@ import streamlit as st
 with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
-c1, c2 = st.columns([1, 4])
+c1, c2, c3 = st.columns([1, 6, 1])
 
 with c2:
     
