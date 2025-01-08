@@ -1,7 +1,4 @@
 import streamlit as st
-from make_prediction import make_prediction
-import warnings
-warnings.filterwarnings("ignore")
 import random
 from datetime import datetime
 
@@ -14,7 +11,7 @@ c1, c2, c3 = st.columns([0.15, 0.7, 0.15])
 inputs = []
 
 with c2:
-    st.title(":gray[Prediction with random inputs]", anchor=False)
+    st.title(":gray[Prediction with Random Inputs]", anchor=False)
     # st.write(":gray[Click below button for prediction]")
 
     # st.divider()
@@ -125,12 +122,18 @@ with c2:
 
         def prediction(user_inputs):
             with st.spinner('Getting your prediction. PLEASE WAIT...'):
-                p = make_prediction(user_inputs)[0]
+                from make_prediction import make_prediction
+                p, df = make_prediction(user_inputs)
                 st.divider()
-                pred = st.title(f":gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p:.2f}]", anchor=False)
+                pred = st.title(f":gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p[0]:.2f}]", anchor=False)
                 st.divider()
-                st.title(":gray[Data]", anchor=False)
-                st.dataframe(user_inputs, use_container_width=True)
+                d1, d2 = st.columns([1, 1], gap="large")
+                with d1:
+                    st.write(":red[Data, you generated randomly]", anchor=False)
+                    st.dataframe(user_inputs, use_container_width=True)
+                with d2:
+                    st.write(":red[Data, sent to ML Model after transformation]", anchor=False)
+                    st.dataframe(df, use_container_width=True)
             
 
 # ====================================================================================================================
@@ -141,7 +144,7 @@ with c2:
         st.write("\n")
         st.write("\n")
         pre = st.form_submit_button(f"# PREDICT", type="primary", icon=":material/currency_rupee:", use_container_width=True)
-        st.caption(":gray[Click above button for prediction]")
+        st.caption(":red[Click above] :gray[button for prediction]")
 
     st.write("\n")
 

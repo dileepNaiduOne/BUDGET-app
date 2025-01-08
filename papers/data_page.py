@@ -1,5 +1,4 @@
 import streamlit as st
-from make_prediction import make_prediction
 import warnings
 warnings.filterwarnings("ignore")
 import datetime
@@ -13,14 +12,14 @@ c1, c2, c3 = st.columns([0.15, 0.7, 0.15])
 inputs = []
 
 with c2:
-    st.title(":gray[Prediction with your inputs]", anchor=False)
+    st.title(":gray[Prediction with Your Inputs]", anchor=False)
     st.caption(":red[*] Providing correct information will ensure precise predictions. :red[Please don't leave any field blank.]")
 
     st.divider()
 
     with st.form("prediction_form", enter_to_submit=False, border=False):
         # Age
-        age = st.number_input(":red[Age]", min_value=18, max_value=70, placeholder="Enter age between 0 and 70", value=None)
+        age = st.number_input(":red[Age]", min_value=18, max_value=70, placeholder="Enter age between 18 and 70", value=None)
         inputs.append(age)
         
         # Gender
@@ -93,7 +92,7 @@ with c2:
         inputs.append(policy)
 
         # Insurance Duration
-        insurance_duration = st.number_input(":red[Insurance Duration]", min_value=0, max_value=9, placeholder="Enter values between 0 and 9", value=None)
+        insurance_duration = st.number_input(":red[Insurance Duration]", min_value=1, max_value=9, placeholder="Enter values between 1 and 9", value=None)
         inputs.append(insurance_duration)
 
         # Previous Claims
@@ -129,11 +128,18 @@ with c2:
     @st.dialog("PREDICTION", width="large")
     def prediction(user_inputs):
         with st.spinner('Getting your prediction. PLEASE WAIT...'):
-            p = make_prediction(user_inputs)[0]
-            pred = st.title(f":gray[The] Premium Amount :gray[for your data is]  :red[₹{p:.2f}]", anchor=False)
+            from make_prediction import make_prediction
+            p, df = make_prediction(user_inputs)
             st.divider()
-            st.title(":gray[Data]", anchor=False)
-            st.dataframe(user_inputs, use_container_width=True)
+            pred = st.title(f":gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p[0]:.2f}]", anchor=False)
+            st.divider()
+            d1, d2 = st.columns([1, 1], gap="large")
+            with d1:
+                st.write(":red[Data, you gave]", anchor=False)
+                st.dataframe(user_inputs, use_container_width=True)
+            with d2:
+                st.write(":red[Data, sent to ML Model after transformation]", anchor=False)
+                st.dataframe(df, use_container_width=True)
 
     @st.dialog("ERROR", width="large")
     def tell_error(user_inputs):

@@ -341,5 +341,5 @@ def make_prediction(output):
 
     avg_error /= len(ml_model)
     avg_error
-
-    return np.expm1(avg_error)
+    ddf = df.T
+    return np.expm1(avg_error), ddf.rename(columns={0 :"value"})
