@@ -12,7 +12,7 @@ with c2:
         # st.title(":gray[BUDGET]", anchor=False)
         # st.write("\n")
         # st.write('\n')
-        st.video(r"images\Budget Demo.mp4", autoplay=True, muted=True, loop=True)
+        st.video(r"images/Budget Demo.mp4", autoplay=True, muted=True, loop=True)
 
     with c23:
         st.write('''
