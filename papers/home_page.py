@@ -1,10 +1,16 @@
 import streamlit as st
+from  streamlit_js_eval import streamlit_js_eval
+screen_width = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
+c1 = 0.15*screen_width
+c2 = 0.7*screen_width
+c3 = 0.15*screen_width
+st.write(screen_width)
 
 
 with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
-c1, c2, c3 = st.columns([2, 3, 2])
+c1, c2, c3 = st.columns([c1, c2, c3])
 
 with c2:
     # st.title(":gray[Use of] BUDGET :gray[app:]", anchor=False)
@@ -36,7 +42,6 @@ with c2:
              '''
              , unsafe_allow_html=True)
     
-
     st.write('\n')
     st.write('\n')
     st.write('\n')
@@ -61,11 +66,8 @@ with c2:
 
     st.divider()
 
-    col3, col4 = st.columns([10, 1])
-
-    with col4:
-        st.markdown("""
-            <a href="https://www.linkedin.com/in/dileepnaidu/" target="_blank">
-                <img src="https://img.icons8.com/?size=500&id=8808&format=png&color=5B5B5B" alt="LinkedIn Profile" width="50" height="50">
-            </a>
-            """, unsafe_allow_html=True)
+    st.markdown("""
+        <a href="https://www.linkedin.com/in/dileepnaidu/" target="_blank">
+            <img src="https://img.icons8.com/?size=500&id=8808&format=png&color=5B5B5B" alt="LinkedIn Profile" width="50" height="50">
+        </a>
+        """, unsafe_allow_html=True)

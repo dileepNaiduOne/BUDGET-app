@@ -3,12 +3,17 @@ from make_prediction import make_prediction
 import warnings
 warnings.filterwarnings("ignore")
 import datetime
+from  streamlit_js_eval import streamlit_js_eval
+screen_width = streamlit_js_eval(js_expressions='screen.width', key = 'SCR')
+c1 = 0.15*screen_width
+c2 = 0.7*screen_width
+c3 = 0.15*screen_width
 
 
 with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
-c1, c2, c3 = st.columns([2, 3, 2])
+c1, c2, c3 = st.columns([c1, c2, c3])
 
 inputs = []
 
