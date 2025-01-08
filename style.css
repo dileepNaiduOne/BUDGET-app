@@ -119,3 +119,42 @@ h1, h2, h3, h4, h5, h6, [class*="css"] {
 [data-testid="stBaseButton-primaryFormSubmit"]:active {
     transform: scale(0.9);
 }
+
+.stHorizontalBlock.st-emotion-cache-ocqkz7.e1f1d6gn5 {
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+[data-testid="stVideo"] {
+    border-radius: 20px; /* Optional: Rounds the corners of the video */
+    box-shadow: 0rem 0rem 1rem 0.5rem rgb(22, 22, 22); /* Drop shadow effect */
+}
+
+#budget, #glimpse-of-pipeline, #predict-with, .st-key-footerlinkedin a{
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center-align the text (optional) */
+}
+
+.stElementContainer.element-container.st-emotion-cache-o0r03.e1f1d6gn4 .stButtonGroup, .st-key-contai .stButtonGroup, .st-key-pipehome .stButton{
+    justify-content: center;
+    justify-items: center;
+    align-items: center; 
+    align-content: center;
+    text-align: center; 
+}
+
+
+/* .stVerticalBlock .st-emotion-cache-1ejefn0 .e1f1d6gn2, .stVerticalBlock .st-emotion-cache-5cliro .e1f1d6gn2 {
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
+
+.stButtonGroup {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+} */
