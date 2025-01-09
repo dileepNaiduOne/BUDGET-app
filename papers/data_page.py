@@ -123,22 +123,24 @@ with c2:
     b1 = st.button(label="Back to Home", type="primary")
     if b1:
         st.switch_page("papers/home_page.py")
-
+    from make_prediction import make_prediction
 
     @st.dialog("PREDICTION", width="large")
     def prediction(user_inputs):
         with st.spinner('Getting your prediction. PLEASE WAIT...'):
-            from make_prediction import make_prediction
+            
             p, df = make_prediction(user_inputs)
             st.divider()
             pred = st.title(f":gray[The] Premium Amount :gray[for the below given data is]  :red[₹{p[0]:.2f}]", anchor=False)
             st.divider()
             d1, d2 = st.columns([1, 1], gap="large")
             with d1:
-                st.write(":red[Data, you gave]", anchor=False)
+                st.write(f":red[Data, you generated randomly]", anchor=False)
+                st.write(f":gray[> > >] {len(user_inputs)} :red[columns]", anchor=False)
                 st.dataframe(user_inputs, use_container_width=True)
             with d2:
-                st.write(":red[Data, sent to ML Model after transformation]", anchor=False)
+                st.write(f":red[Data, sent to ML Model after transformation]", anchor=False)
+                st.write(f":gray[> > >] {len(df)} :red[columns]", anchor=False)
                 st.dataframe(df, use_container_width=True)
 
     @st.dialog("ERROR", width="large")

@@ -3,10 +3,9 @@ import streamlit as st
 with open( "style.css" ) as css:
     st.markdown( f'<style>{css.read()}</style>' , unsafe_allow_html= True)
 
-c1, c2, c3 = st.columns([0.15, 0.7, 0.15])
+# c1, c2, c3 = st.columns([0.15, 0.7, 0.15])
 
-with c2:
-    
+with st.container(key="tableau-block"):
     st.components.v1.html('''
         <div class='tableauPlaceholder' id='viz1735665238061' style='position: relative'>
             <noscript>
@@ -39,7 +38,7 @@ with c2:
             scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
             vizElement.parentNode.insertBefore(scriptElement, vizElement);                
         </script>
-    ''', width=1500, height=800)
+    ''', width=1400, height=800)
 
     st.link_button(label="View this chart on Tableau Public", url="https://public.tableau.com/views/charts_17356651247130/0?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link", type="primary")
     b1 = st.button(label="Back to Home", type="primary")
