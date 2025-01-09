@@ -130,11 +130,11 @@ with c2:
                 d1, d2 = st.columns([1, 1], gap="large")
                 with d1:
                     st.write(f":red[Data, you generated randomly]", anchor=False)
-                    st.write(f":gray[> > >] {len(user_inputs)} :red[columns]", anchor=False)
+                    st.write(f":gray[> > >] {len(user_inputs)} :red[fields]", anchor=False)
                     st.dataframe(user_inputs, use_container_width=True)
                 with d2:
                     st.write(f":red[Data, sent to ML Model after transformation]", anchor=False)
-                    st.write(f":gray[> > >] {len(df)} :red[columns]", anchor=False)
+                    st.write(f":gray[> > >] {len(df)} :red[fields]", anchor=False)
                     st.dataframe(df, use_container_width=True)
             
 
