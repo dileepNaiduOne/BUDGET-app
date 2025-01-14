@@ -39,16 +39,20 @@ with c2:
                 '''
                 , unsafe_allow_html=True)
     
-        st.write('\n')
-        st.write('\n')
-        st.write('\n')
-        
-        b1 = st.pills(label="None", options=['See Tableau Charts', 'See Pipeline Design',], selection_mode='single', label_visibility='collapsed')
+    st.write('\n')
+    st.divider()
+    st.write('\n')
+
+    with st.container(key="home-selects"):
+        b1 = st.pills(label="None", options=['See Tableau Charts', 'See Pipeline Design', "See Insights"], selection_mode='single', label_visibility='collapsed')
 
         if b1 == 'See Tableau Charts':
             st.switch_page("papers/dash_page.py")
         if b1 == 'See Pipeline Design':
             st.switch_page("papers/pipe_page.py")
+        if b1 == 'See Insights':
+            st.switch_page("papers/about_model_page.py")
+            
 
 
     st.divider()
@@ -62,7 +66,8 @@ with c2:
             st.switch_page("papers/data_page.py")
         if b2 == 'Random Input':
             st.switch_page("papers/random_page.py")
-
+            
+    st.write('\n')
     st.divider()
     with st.container(key="footerlinkedin"):
         st.markdown("""

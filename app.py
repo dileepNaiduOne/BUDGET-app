@@ -20,6 +20,11 @@ dash_page = st.Page(
     title="Tableau Dashboards Page"
 )
 
+about_model_page = st.Page(
+    page="papers/about_model_page.py", 
+    title="About Model Page"
+)
+
 data_page = st.Page(
     page="papers/data_page.py", 
     title="Data Page"
@@ -31,6 +36,6 @@ random_page = st.Page(
 )
 
 
-pg = st.navigation(pages=[home_page, pipe_page, dash_page, data_page, random_page], position="hidden")
+pg = st.navigation(pages=[home_page, pipe_page, dash_page, about_model_page, data_page, random_page], position="hidden")
 
 pg.run()
