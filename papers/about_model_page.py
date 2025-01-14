@@ -25,7 +25,7 @@ with c2:
     with c23:
         st.metric(":red[MAPE] :gray[: Test]", 0.978, delta="Train 0.978", delta_color="off")
     with c24:
-        st.metric(":red[Adjusted R²] :gray[: Test]", -1.617, delta="Train -1.602", delta_color="off")
+        st.metric(":gray[Adjusted R² : Test]", -1.617, delta="Train -1.602", delta_color="off")
 
     #---------------------------------------------------------------------------------------------------------------------
     #---------------------------------------------------------------------------------------------------------------------
