@@ -32,9 +32,10 @@ with c2:
                         on the "Random Input" page. 
                     </p>
                     <p style=color:#BFBEBA>
-                        The app has <span style=color:#f3626f>two more pages</span> that you can navigate to, each with a specific purpose. 
+                        The app has <span style=color:#f3626f>three more pages</span> that you can navigate to, each with a specific purpose. 
                         The "See Tableau Charts" page shows <span style=color:#f3626f> interactive charts </span>, 
-                        and "See Pipeline Design" page visualizes the <span style=color:#f3626f> whole project's pipeline </span> steps.
+                        "See Pipeline Design" page visualizes the <span style=color:#f3626f> whole project's pipeline </span> steps,
+                        and "See Insights" page tells the ML model's performance and <span style=color:#f3626f>feature importance </span>.
                     </p>
                 '''
                 , unsafe_allow_html=True)

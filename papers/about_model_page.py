@@ -19,7 +19,7 @@ with c2:
     st.write('\n')
     c21, c22, c23, c24 = st.columns([1,1,1,1])
     with c21:
-        st.metric(":red[RMSE] :gray[: Test]", 1393.72, delta="Train 1396.74", delta_color="off")
+        st.metric(":red[RMSE] :gray[: Test]", "₹1393.72", delta="Train ₹1396.74", delta_color="off")
     with c22:
         st.metric(":red[RMSLE] :gray[: Test]", 4.696, delta="Train 4.692", delta_color="off")
     with c23:
@@ -62,7 +62,7 @@ with c2:
         plot_bgcolor="rgba(0,0,0,0)",  
         paper_bgcolor="rgba(0,0,0,0)",  
         xaxis=dict(
-        showticklabels=False,  
+        showticklabels=True,  
         showgrid=False,        
         zeroline=False         
         ),
@@ -76,6 +76,7 @@ with c2:
     fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside', marker_color=["#f3626f"]*3+["gray"]*7)
 
     st.plotly_chart(fig)
+    st.write(top10.iloc[:, 1:])
 
     with st.expander(" - See All Features Importance", icon="🚨"):
         st.write(top)
