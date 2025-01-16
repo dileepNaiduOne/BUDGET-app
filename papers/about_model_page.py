@@ -19,13 +19,13 @@ with c2:
     st.write('\n')
     c21, c22, c23, c24 = st.columns([1,1,1,1])
     with c21:
-        st.metric(":red[RMSE] :gray[: Test]", "₹1393.72", delta="Train ₹1396.74", delta_color="off")
+        st.metric(":red[RMSE] :gray[: Test]", "₹920.29", delta="Train ₹909.74", delta_color="off")
     with c22:
-        st.metric(":red[RMSLE] :gray[: Test]", 4.696, delta="Train 4.692", delta_color="off")
+        st.metric(":red[RMSLE] :gray[: Test]", 1.042, delta="Train 1.020", delta_color="off")
     with c23:
-        st.metric(":red[MAPE] :gray[: Test]", 0.978, delta="Train 0.978", delta_color="off")
+        st.metric(":red[MAPE] :gray[: Test]", 1.828, delta="Train 1.734", delta_color="off")
     with c24:
-        st.metric(":gray[Adjusted R² : Test]", -1.617, delta="Train -1.602", delta_color="off")
+        st.metric(":gray[Adjusted R² : Test]", -0.141, delta="Train -0.103", delta_color="off")
 
     #---------------------------------------------------------------------------------------------------------------------
     #---------------------------------------------------------------------------------------------------------------------
